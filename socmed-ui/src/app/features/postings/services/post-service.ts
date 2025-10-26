@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Post } from '../data/post.model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class PostService {
 
   private httpService = inject(HttpClient);
-  postsList = signal<Post[]>([]);
 
   baseUrl = 'http://localhost:5077';
 
-  getPosts(): void {
-    this.httpService.get(this.baseUrl + '/Posts').subscribe(
-      posts => {
-        console.log(posts);
-      }
-    )
+  getPosts(): Observable<Post[]> {
+    return this.httpService.get<Post[]>(this.baseUrl + '/Posts')
   }
 
   createNewPost(newPost: Post): void {
