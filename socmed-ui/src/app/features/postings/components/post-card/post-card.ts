@@ -9,9 +9,9 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     MatButtonModule
   ],
-  templateUrl: './posts-card.html',
-  styleUrl: './posts-card.scss',
+  templateUrl: './post-card.html',
+  styleUrl: './post-card.scss',
 })
-export class PostsCard {
+export class PostCard {
 
 }

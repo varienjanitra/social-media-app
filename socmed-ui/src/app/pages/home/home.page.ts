@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PostsCard } from '../../features/postings/components/posts-card/posts-card';
+import { PostCard } from '../../features/postings/components/post-card/post-card';
 
 @Component({
   selector: 'vxsocmed-home',
   imports: [
-    PostsCard
+    PostCard
   ],
   templateUrl: './home.page.html',
   styleUrl: './home.page.scss',
