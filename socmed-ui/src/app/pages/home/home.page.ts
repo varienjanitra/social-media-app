@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { PostsCard } from '../../features/postings/components/posts-card/posts-card';
 
 @Component({
   selector: 'vxsocmed-home',
   imports: [
-    MatCardModule,
-    MatButtonModule
+    PostsCard
   ],
   templateUrl: './home.page.html',
   styleUrl: './home.page.scss',
