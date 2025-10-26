@@ -2,22 +2,21 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
-        News Card Title
+        Posted By: {{ postData()?.postedByUserId }}
       </mat-card-title>
       <mat-card-subtitle>
-        Subheading
+        Posted on: {{ postData()?.dateCreated }}
       </mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
 
   <mat-card-content>
-    Sample Content
+    Posted By: {{ postData()?.postBody }}
   </mat-card-content>
 
   <mat-card-footer>
     <mat-card-actions align="end">
       <button matButton="outlined">Close</button>
-      <button matButton="outlined" (click)="getPosts()">Get Posts</button>
     </mat-card-actions>
   </mat-card-footer>
 </mat-card>

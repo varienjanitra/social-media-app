@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Post } from '../data/post.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ export class PostService {
 
   baseUrl = 'http://localhost:5077';
 
-  getPosts(): Observable<Post[]> {
+  getPosts$(): Observable<Post[]> {
     return this.httpService.get<Post[]>(this.baseUrl + '/Posts')
   }
 

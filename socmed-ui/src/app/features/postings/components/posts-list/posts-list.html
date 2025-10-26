@@ -1,0 +1,6 @@
+
+<div class="py-2 flex flex-col space-y-2">
+  @for (post of postsList(); track post.id) {
+    <vxsocmed-posts-card [postData]="post"/>
+  }
+</div>

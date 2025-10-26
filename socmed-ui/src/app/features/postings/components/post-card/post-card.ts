@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, Input } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { PostService } from '../../services/post-service';
+
+import { Post } from '../../data/post.model';
 
 @Component({
   selector: 'vxsocmed-posts-card',
@@ -14,9 +15,5 @@ import { PostService } from '../../services/post-service';
   styleUrl: './post-card.scss',
 })
 export class PostCard {
-  private postServices = inject(PostService);
-
-  getPosts(): void {
-    this.postServices.getPosts();
-  }
+  postData = input<Post>();
 }
