@@ -5,3 +5,8 @@ export interface Post
   postBody: string,
   dateCreated: Date
 }
+
+export interface EnrichedPost extends Post
+{
+  userName: string;
+}

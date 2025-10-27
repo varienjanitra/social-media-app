@@ -11,7 +11,7 @@ export class UserService {
 
   baseUrl = 'http://localhost:5077';
 
-  getPosts$(): Observable<User[]> {
+  getUsers$(): Observable<User[]> {
     return this.httpService.get<User[]>(this.baseUrl + '/Users')
   }
 
