@@ -1,6 +1,15 @@
-var AllowedOrigins = "_AllowedOrigins";
+using Microsoft.EntityFrameworkCore;
+using socmed_api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+
+builder.Services.AddDbContext<VxSocmedDbContext>(options =>
+    options.UseNpgsql(connectionString)
+);
+
+var AllowedOrigins = "_AllowedOrigins";
 
 builder.Services.AddCors(options =>
 {

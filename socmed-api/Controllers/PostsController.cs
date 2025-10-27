@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using socmed_api.Models;
 
 namespace socmed_api.Controllers;
 
@@ -6,11 +8,19 @@ namespace socmed_api.Controllers;
 [Route("[controller]")]
 public class PostsController : ControllerBase
 {
-    [HttpGet(Name = "GetPosts")]
-    public IEnumerable<PostModel> Get()
-    {
-        var dummy = new DummyData();
+    private readonly VxSocmedDbContext _context;
 
-        return dummy.DummyPosts;
+    public PostsController(VxSocmedDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet(Name = "GetPosts")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+    {
+        var posts = await _context.Posts.ToListAsync();
+
+        return Ok(posts);
     }
 }
