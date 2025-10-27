@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>socmed_api</RootNamespace>
+    <UserSecretsId>442b9604-4220-4618-b916-1d06451f4a6a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

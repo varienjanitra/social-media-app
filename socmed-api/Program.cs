@@ -3,7 +3,8 @@ using socmed_api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+var connectionString = builder.Configuration.GetConnectionString("vx-socmed-db")
+    ?? throw new InvalidOperationException("Connection string 'YourDatabaseAlias' not found.");
 
 builder.Services.AddDbContext<VxSocmedDbContext>(options =>
     options.UseNpgsql(connectionString)
