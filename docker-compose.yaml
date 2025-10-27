@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  socmed-db:
+    image: postgres
+    container_name: socmed-db
+    restart: always
+    environment:
+      - POSTGRES_USER=vx-socmed
+      - POSTGRES_PASSWORD_FILE=/run/secrets/socmed-db-password
+      - POSTGRES_DB=vx-socmed-db
+    ports:
+      - "5432:5432"
+    networks:
+      - socmed-network
+    volumes:
+      - socmed-volume:/var/lib/postgresql
+    secrets:
+      - socmed-db-password
+
+# Define the network
+networks:
+  socmed-network:
+    driver: bridge
+
+volumes:
+  socmed-volume:
+    driver: local
+
+# Directory and files is put on .gitignore
+secrets:
+  socmed-db-password:
+    file: ./secrets/socmed-db-password.txt
