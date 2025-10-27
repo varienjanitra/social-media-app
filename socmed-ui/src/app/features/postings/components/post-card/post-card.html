@@ -2,16 +2,18 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
-        Posted By: {{ postData()?.userName }}
+        @{{ postData()?.userName }}
       </mat-card-title>
       <mat-card-subtitle>
-        Posted on: {{ postData()?.dateCreated }}
+        {{ postData()?.dateCreated | date:'medium'}}
       </mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
 
   <mat-card-content>
-    Posted By: {{ postData()?.postBody }}
+    <div class="text-xl">
+      {{ postData()?.postBody }}
+    </div>
   </mat-card-content>
 
   <mat-card-footer>
