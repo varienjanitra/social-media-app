@@ -1,9 +1,17 @@
-namespace socmed_api;
+﻿using System;
+using System.Collections.Generic;
 
-public class PostModel
+namespace socmed_api.Models;
+
+public partial class Post
 {
-    public int Id { get; set; }
-    public required int PostedByUserId { get; set; }
-    public required string PostBody { get; set; }
-    public DateTime DateCreated { get; set; }
+    public long Id { get; set; }
+
+    public long PostedByUserId { get; set; }
+
+    public string PostBody { get; set; } = null!;
+
+    public DateTime? DateCreated { get; set; }
+
+    public virtual User PostedByUser { get; set; } = null!;
 }
