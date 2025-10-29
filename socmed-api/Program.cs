@@ -3,6 +3,10 @@ using socmed_api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Upon first initialization of socmed-api development, do not forget to configure dotnet secrets
+// dotnet secret is done by following command:
+// dotnet user-secrets init
+// dotnet user-secrets set "ConnectionStrings:vx-socmed-db" "[YOUR_CONNECTION_STRING]"
 var connectionString = builder.Configuration.GetConnectionString("vx-socmed-db")
     ?? throw new InvalidOperationException("Connection string 'YourDatabaseAlias' not found.");
 
