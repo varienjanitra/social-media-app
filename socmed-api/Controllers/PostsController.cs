@@ -15,12 +15,47 @@ public class PostsController : ControllerBase
         _context = context;
     }
 
-    [HttpGet(Name = "GetPosts")]
+    [HttpGet(Name = "GetAllPosts")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+    public async Task<ActionResult<IEnumerable<Post>>> GetAllPosts()
     {
         var posts = await _context.Posts.ToListAsync();
 
         return Ok(posts);
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Post>> GetPostById(long id)
+    {
+        var post = await _context.Posts.FindAsync(id);
+
+        if (post == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(post);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Post>> AddPost(Post newPost)
+    {
+        try
+        {
+            _context.Posts.Add(newPost);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetPostById), new { id = newPost.Id }, newPost);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        
     }
 }
