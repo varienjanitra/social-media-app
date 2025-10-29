@@ -42,10 +42,17 @@ public class PostsController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Post>> AddPost(Post newPost)
+    public async Task<ActionResult<Post>> AddPost(PostCreateDto newPostDto)
     {
         try
         {
+            var newPost = new Post
+            {
+                PostedByUserId = newPostDto.PostedByUserId,
+                PostBody = newPostDto.PostBody,
+                DateCreated = DateTime.UtcNow
+            };
+            
             _context.Posts.Add(newPost);
             await _context.SaveChangesAsync();
 
